@@ -359,6 +359,11 @@ class KalmanFilterSimulatorWindow(AnimationWindow):
 		self.modifyMatrix("Q")
 		self.modifyMatrix("R")
 		self.modifyMatrix("N")
+		self.kfmodel.A = self.A
+		self.kfmodel.B = self.B
+		self.kfmodel.H = self.H
+		self.kfmodel.Q = self.Q
+		self.kfmodel.R = self.R
 
 		# the core of this code... ....
 		#**************** Kalman Filter *******************#
@@ -494,7 +499,9 @@ class KalmanFilterSimulatorWindow(AnimationWindow):
 				if self.entries[id][i][j].get() == "":
 					switcher[id][i, j] = 1.0
 				else:	
-					switcher[id][i, j] =  float(self.entries[id][i][j].get())
+					switcher[id][i, j] =  float(self.entries[id][i][j].get()) 
+
+		
 
 	def showStatus(self):
 		"""
